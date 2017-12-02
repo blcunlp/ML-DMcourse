@@ -31,7 +31,9 @@ def kMeans(dataSet, k, distMeas=distEclud, createCent=randCent):
         clusterChanged = False
         for i in range(m):#for each data point assign it to the closest centroid
             minDist = inf; minIndex = -1
-            #code here!
+            distJI = distMeas(centroids[j,:],dataSet[i,:])
+            if distJI < minDist:
+              minDist = distJI; minIndex = j
             if clusterAssment[i,0] != minIndex: clusterChanged = True
             clusterAssment[i,:] = minIndex,minDist**2
         print (centroids)
@@ -47,6 +49,9 @@ def main():
     datMat = mat(loadDataSet('testSet.txt'))
     myCentroids,clusterAssing = kMeans(datMat,4)
     print (myCentroids)
+    for data in myCentroids:
+        if data[0,0]==0:
+            print(data)
 
 if __name__ == '__main__':
     main()
