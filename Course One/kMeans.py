@@ -49,7 +49,7 @@ def main():
     datMat = mat(loadDataSet('testSet.txt'))
     myCentroids,clusterAssing = kMeans(datMat,4)
     print (myCentroids)
-    for data in myCentroids:
+    for data in clusterAssing:
         if data[0,0]==0:
             print(data)
 
